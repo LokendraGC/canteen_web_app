@@ -1,0 +1,30 @@
+.container{
+    width: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+    padding: 40px 0px;
+    overflow: hidden;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.title{
+    font-size: 1.5vw;
+    font-weight: 700;
+    padding-top: 10px;
+    color: #d1411e;
+}
+
+.price{
+    color: #666;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.desc{
+    text-align: center;
+    color: #777;
+}

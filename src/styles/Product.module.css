@@ -1,0 +1,25 @@
+.container{
+    padding: 20px 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc{
+    color: #444;
+    font-size: 1.5vw;
+    width: 70%;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.title{
+    text-transform: uppercase;
+}

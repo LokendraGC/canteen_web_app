@@ -1,0 +1,63 @@
+.container{
+    height: calc(100vh - 100px);
+    display: flex;
+}
+
+.left{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right{
+    flex: 1;
+}
+
+.imgContainer{
+    height: 80%;
+    width: 80%;   
+    position: relative;  
+}
+
+.price{
+    font-size: 1.3vw;
+    color: #d1411e;
+    border-bottom:2px solid #d1411e;
+}
+
+.ingradient{
+    display: flex;
+    margin-bottom: 20px; 
+}
+
+.option{
+    display: flex;
+    font-weight: 400;
+    font-size: 1.3vw;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.checkbox{
+    height: 20px;
+    width: 20px;
+}
+
+.quantity{
+    height: 27px;
+    width: 35px;
+}
+
+.button{
+    border-radius: 4px;
+    border: none;
+    background-color: #d1411e;
+    margin-left: 10px;
+    height: 34px;
+    width: 85px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}

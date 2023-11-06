@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    height: calc(100vh - 100px);
+     font-family: 'Ubuntu', sans-serif;
+     background: #263640;
+     z-index: 999;
+     color: white;
+}
+
+.item{
+    flex:1;
+    position: relative;
+    display: flex;
+    padding-top: 100px;  
+    flex-direction: column;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    flex: 1 ;
+    /* padding: 0px 30px; */
+}
+
+.text{
+    color: white;
+}
+
