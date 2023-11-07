@@ -61,3 +61,43 @@
     color: white;
     font-weight: 600;
 }
+
+@media screen and (max-width:480px) {
+    .container{
+        height: auto;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .right{
+        flex: auto;
+        padding-bottom: 20px;
+    }
+
+    .imgContainer{
+        width: 70vw;
+        height: 70vw;
+        margin-top: 20px;
+    }
+
+ .price{
+        font-size: 4vw;
+        font-weight: 600;
+    }
+    
+    .checkbox{
+        margin-left: 44px;
+    }
+    .text{
+       font-size: 4vw;
+   }
+
+   .title{
+    margin: 1px;
+   }
+
+   .ingradient{
+    display: flex;
+    flex-direction: column;
+   }
+}

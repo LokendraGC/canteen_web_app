@@ -35,13 +35,13 @@ const productItem = () => {
           <input type="checkbox" name="spicy" id="spicy" 
           className={styles.checkbox}
           />
-          <label htmlFor="spicy">With Spice</label>
+          <label className={styles.text} htmlFor="spicy" >With Spice</label>
           </div>
           <div className={styles.option}> 
           <input type="checkbox" name="sauce" id="sauce" 
           className={styles.checkbox}
           />
-          <label htmlFor="sauce">With Sauce</label>
+          <label className={styles.text} htmlFor="sauce">With Sauce</label>
           </div>
         </div>
         <div className={styles.add}>

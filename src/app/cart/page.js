@@ -8,7 +8,7 @@ const Cart = () => {
       <div className={styles.left}>
         <table className={styles.table}>
           <thead>
-            <tr className={styles.tr}>
+            <tr className={styles.trTitle}>
               <th>Product</th>
               <th>Name</th>
               <th>Extras</th>
@@ -97,7 +97,7 @@ const Cart = () => {
             <b className={styles.totalTextTitle}>Discount:</b> Rs.0.0
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b> Rs.40
+            <b className={styles.totalTextTitle} >Total:</b> Rs.40
           </div>
           <button className={styles.button}>CHECKOUT NOW!</button>
         </div>

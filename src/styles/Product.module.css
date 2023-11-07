@@ -23,3 +23,13 @@
 .title{
     text-transform: uppercase;
 }
+
+@media screen and (max-width:480px) {
+    .title{
+        text-align: center;
+    }
+    .desc{
+        width: 90%;
+        font-size: 4vw;
+    }
+}

@@ -15,10 +15,10 @@ const Order = () => {
         <div className={styles.row}>
           <table className={styles.table}>
             <thead>
-              <tr className={styles.tr}>
+              <tr className={styles.trTitle}>
                 <th>Order ID</th>
                 <th>Student Name</th>
-                <th> Branch</th>
+                <th> Status</th>
                 <th>Total</th>
               </tr>
             </thead>
@@ -32,7 +32,7 @@ const Order = () => {
                   <span className={styles.name}>Lokendra GC</span>
                 </td>
                 <td>
-                  <span className={styles.branch}>BEI</span>
+                  <span className={styles.status}>Student</span>
                 </td>
                 <td>
                   <span className={styles.total}>Rs.40</span>

@@ -43,7 +43,6 @@
 .text:last-child{
     font-weight: bold;
     font-size: 21px;
-
 }
 
 .list{
@@ -87,3 +86,23 @@
     font-weight: 600;
 }
 
+@media screen and (max-width:480px) {
+    .item:nth-child(2){
+    display: none;
+}
+    .item:nth-child(1){
+    flex: 3;
+}
+
+.telephoneBtn{
+    padding: 7px;
+}
+
+.texts{
+    font-size: 1vw;
+}
+
+.text{
+    font-size: 2vw;
+}
+}
