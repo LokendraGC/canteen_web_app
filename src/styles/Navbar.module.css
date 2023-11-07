@@ -54,11 +54,11 @@
     font-size: 1.4vw;
     font-weight: 600;
     padding: 0;
-    cursor:pointer;
 }
 
 .listItem{
     margin: 20px;
+    cursor:pointer;
 
 }
 
