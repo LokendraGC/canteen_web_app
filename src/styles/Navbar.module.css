@@ -86,12 +86,32 @@
     font-weight: 600;
 }
 
-@media screen and (max-width:480px) {
-    .item:nth-child(2){
+.menu{
+    color: white;
     display: none;
+    opacity: 0;
 }
-    .item:nth-child(1){
+
+.cross{
+    display: none;
+    opacity: 0;
+}
+
+
+
+@media screen and (max-width:480px) {
+ 
+ 
+.item:nth-child(2){
+    display: block;
+}
+
+.item:nth-child(1){
     flex: 3;
+}
+
+.listMobile{
+    display: block;
 }
 
 .telephoneBtn{
@@ -105,4 +125,47 @@
 .text{
     font-size: 2vw;
 }
+
+.menu{
+    color: white;
+    display: block;
+    opacity: 1;
+}
+
+.cross{
+    color: white;
+    display: block;
+    opacity: 1;
+}
+
+.listMobile{
+    display: none;
+}
+
+
+.list{
+    display: none;
+}
+
+.listMobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #263640; */
+    background-color: #d1411e;
+    width: 60%;
+    padding: 75px;
+    position: absolute;
+    list-style: none;
+    left: 0;
+    margin-top: 50px;
+    height: 80vh;
+}
+
+.listItem{
+    transition: all 1s ease-out;
+    color: white;
+    font-size: 4.9vw;
+}
+
 }
