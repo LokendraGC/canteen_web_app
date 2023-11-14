@@ -1,22 +1,25 @@
 import React from "react";
 import styles from "../styles/Card.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
-const Cart = () => {
+const Card = ({product}) => {
   return (
     <div className={styles.container}>
+      <Link href={`/products/${product._id}`} passHref>
       <Image
-        src="/Img/samosa1.jpg"
+        src={product.img}
         alt=""
         width={250}
         height={250}
         style={{ objectFit: "contain", boxShadow: "0px 0px 9px #ccc" }}
       />
-      <div className={styles.title}>Samosa</div>
-      <span className={styles.price}>Rs.40</span>
-      <p className={styles.desc}>Rs 20 per Samosa</p>
+      </Link>
+      <div className={styles.title}>{product.title}</div>
+      <span className={styles.price}>{product.price}</span>
+      <p className={styles.desc}>{product.desc}</p>
     </div>
   );
 };
 
-export default Cart;
+export default Card;

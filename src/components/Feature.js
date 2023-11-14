@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Feature = () => {
 
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
 
   const images = [
     "/Img/milkTea.png",
@@ -15,19 +15,19 @@ const Feature = () => {
     "/Img/chaumin3.png",
   ];
 
-  const handleArrow = (direction)=>{
-    if(direction==='l'){
-      setIndex(index!==0 ? index-1: 2)
+  const handleArrow = (direction) => {
+    if (direction === "l") {
+      setIndex(index !== 0 ? index - 1 : 2);
     }
-    if(direction==='r'){
-      setIndex(index!==2 ? index+1: 0)
+    if (direction === "r") {
+      setIndex(index !== 2 ? index + 1 : 0);
     }
-  }
-  console.log(index)
+  };
+  console.log(index);
 
   return (
     <div className={styles.container}>
-      <div className={styles.arContainer} style={{ left: 0 }} >
+      <div className={styles.arContainer} style={{ left: 0 }}>
         <Image
           src="/Img/arrowl.png"
           alt=""
@@ -36,10 +36,13 @@ const Feature = () => {
           objectFit="contain"
         />
       </div>
-      <div className={styles.wrapper} style={{transform:`translateX(${-100*index}vw)`}}>
+      <div
+        className={styles.wrapper}
+        style={{ transform: `translateX(${-100 * index}vw)` }}
+      >
         {images.map((img, i) => (
           <div className={styles.imgContainer} key={i}>
-            <Image src={img} alt="" layout="fill" objectFit="contain"/>
+            <Image src={img} alt="" layout="fill" objectFit="contain" />
           </div>
         ))}
       </div>
@@ -57,3 +60,5 @@ const Feature = () => {
 };
 
 export default Feature;
+
+

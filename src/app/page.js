@@ -1,13 +1,21 @@
 import Feature from "@/components/Feature";
 import Product from "@/components/Product";
-import Link from "next/link";
 
+export default async function Home({ initialProducts}) {
+  let fetchedProducts = [];
+  try {
+    const response = await fetch("http://localhost:3000/api/products");
+    const data = await response.json();
+    fetchedProducts = data.result || [];
+    // console.log(fetchedProducts);
+  } catch (err) {
+    console.log(err.message);
+  }
 
-export default function Home() {
   return (
-    <main >
-     <Feature/>
-     <Product/> 
+    <main>
+      <Feature />
+      <Product products={initialProducts || fetchedProducts} />
     </main>
-  )
+  );
 }
