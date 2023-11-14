@@ -16,6 +16,7 @@ export async function GET() {
   return NextResponse.json({ result: data });
 }
 
+
 export async function POST(req) {
   console.log(req);
   const { method } = req;

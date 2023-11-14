@@ -1,73 +1,94 @@
-//page.js
-
+import { connectionStr } from "../../../../lib/mongo";
+import { Product } from "../../../../models/product";
 import mongoose from "mongoose";
-import dbConnect from "../../../../lib/mongo";
 import { NextResponse } from "next/server";
-import Product from "../../../../models/product";
 
-export default async function POST(req) {
-  const { method, payload } = req;
-  console.log(req);
-  // let payload = await req.json();
+// // Assuming you're using Next.js API routes
 
-  if (method === "POST") {
+// export async function GET(req) {
+//   const {
+//     method,
+//     query: { id },
+//   } = req;
+//   let data = null;
+
+//   if (method === "GET" && id) {
+//     try {
+//       await mongoose.connect(connectionStr);
+//       data = await Product.findById(id);
+
+//       if (!data) {
+//         return NextResponse.json({ success: false, error: "Item not found" });
+//       }
+//     } catch (err) {
+//       data = { success: false, error: err.message };
+//     } finally {
+//       await mongoose.disconnect(); // Close the database connection
+//     }
+//   }
+
+//   return NextResponse.json({ result: data });
+// }
+
+export async function GETById(req, { params }) {
+  const { method } = req;
+  const { id } = params;
+  let data = null;
+  console.log(id);
+  if (method === "GET" && id) {
     try {
-      await mongoose.connect(dbConnect);
+      await mongoose.connect(connectionStr);
+      data = await Product.findOne({ _id: id });
+      console.log(data);
 
-      const product = new Product(payload);
-      const result = await product.save();
-
-      return NextResponse.json({ result, success: true });
-    } catch (error) {
-      return NextResponse.json({ error, success: false }, { status: 500 });
+      if (!data) {
+        return NextResponse.json({ success: false, error: "Item not found" });
+      }
+    } catch (err) {
+      data = { success: false, error: err.message };
+    } finally {
+      await mongoose.disconnect();
     }
-  } else {
-    return NextResponse.json(
-      { message: "Method Not Allowed" },
-      { status: 405 }
-    );
-  }
-}
-
-//mongo.js
-
-import mongoose from 'mongoose'
-
-const MONGO_URL = process.env.MONGO_URL
-
-if (!MONGO_URL) {
-  throw new Error(
-    'Please define the MONGO_URL environment variable inside .env.local'
-  )
-}
-
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
- */
-let cached = global.mongoose
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null }
-}
-
-async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn
   }
 
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-    }
-
-    cached.promise = mongoose.connect(MONGO_URL, opts).then((mongoose) => {
-      return mongoose
-    })
-  }
-  cached.conn = await cached.promise
-  return cached.conn
+  return NextResponse.json({ result: data });
 }
 
-export default dbConnect
+
+
+// export async function PUT(req) {
+//   console.log(req);
+//   const {
+//     method,
+//     query: { id },
+//   } = req;
+//   const payload = await req.json();
+
+//   if (method === "PUT") {
+//     try {
+//       await mongoose.connect(connectionStr);
+//       let product = new Product(payload);
+//       const result = await product.save();
+//       return NextResponse.json({ message: result });
+//     } catch (err) {
+//       return NextResponse.json({ error: err.message });
+//     }
+//   }
+// }
+
+// export async function DELETE(req) {
+//   console.log(req);
+//   const { method } = req;
+//   const payload = await req.json();
+
+//   if (method === "DELETE") {
+//     try {
+//       await mongoose.connect(connectionStr);
+//       let product = new Product(payload);
+//       const result = await product.DELETE();
+//       return NextResponse.json({ message: result });
+//     } catch (err) {
+//       return NextResponse.json({ error: err.message });
+//     }
+//   }
+// }
