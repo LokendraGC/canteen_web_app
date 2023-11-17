@@ -9,6 +9,8 @@
     width: 100px;
 }
 
+
+
 .left{
     flex: 2;
 }
@@ -87,6 +89,7 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
+       
     }
     .name{
         font-size: 4vw;

@@ -5,8 +5,12 @@ import Image from "next/image";
 import {RiMenu2Fill} from 'react-icons/ri'
 import {MdRestaurantMenu} from 'react-icons/md'
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Navbar = () => {
+
+  const quantity = useSelector(state=>state.cart.quantity)
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,7 +30,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      
       <div className={styles.item}>
         <ul className={menuOpen ? styles.listMobile : styles.list}>
           <li className={styles.listItem}>Homepage</li>
@@ -37,22 +40,24 @@ const Navbar = () => {
         </ul>
       </div>
       <div className={styles.item}>
+        <Link href='/cart' passHref>
         <div className={styles.cart}>
           <Image src="/Img/cart.png" alt="" width={30} height={30} />
-          <div className={styles.counter}>2</div>
+          <div className={styles.counter}>{quantity}</div>
         </div>
-          <RiMenu2Fill
-            size={30}
-            className={styles.menu}
-            onClick={toggleMenu}
-            style={{ display: menuOpen ? "none" : "block" }}
-          />
-          <MdRestaurantMenu
-            size={30}
-            className={styles.cross}
-            onClick={toggleMenu}
-            style={{ display: menuOpen ? "block" : "none" }}
-          />
+        </Link>
+        <RiMenu2Fill
+          size={30}
+          className={styles.menu}
+          onClick={toggleMenu}
+          style={{ display: menuOpen ? "none" : "block" }}
+        />
+        <MdRestaurantMenu
+          size={30}
+          className={styles.cross}
+          onClick={toggleMenu}
+          style={{ display: menuOpen ? "block" : "none" }}
+        />
       </div>
     </div>
   );

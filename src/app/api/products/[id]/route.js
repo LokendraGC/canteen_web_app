@@ -4,9 +4,9 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function GET(req, context) {
-  console.log(context);
+  // console.log(context);
   const { params } = context;
-  console.log(params.id);
+  // console.log(params.id);
 
   let data = [];
 
@@ -14,7 +14,7 @@ export async function GET(req, context) {
   try {
     await mongoose.connect(connectionStr);
     data = await Product.findOne({ _id: id });
-    console.log(data);
+    // console.log(data);
 
     if (!data) {
       return NextResponse.json({ success: false, error: "Item not found" });

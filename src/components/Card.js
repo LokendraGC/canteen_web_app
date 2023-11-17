@@ -3,7 +3,8 @@ import styles from "../styles/Card.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({product}) => {
+const 
+Card = ({product}) => {
   return (
     <div className={styles.container}>
       <Link href={`/products/${product._id}`} passHref>

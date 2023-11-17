@@ -1,25 +1,39 @@
-import React from 'react'
+'use client'
+import React ,{useState} from 'react'
 import Image from "next/image";
 import styles from '../../../styles/productItem.module.css'
+import { useDispatch } from 'react-redux';
+import { addProduct } from '@/app/redux/cartSlice';
+
+  const Product = async ({params}) => {
+
+    const dispach = useDispatch();
+    const [extras, setExtras] = useState([])
+    const [price,setPrice] = useState()
+    const [quantity,setQuantity] = useState(1)
+
+    let fetchedProduct = [];
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/products/${params.id}`
+      );
+      const data = await response.json();
+      fetchedProduct = data.result || [];
+      console.log("tait");
+      // console.log(fetchedProduct);
+    } catch (err) {
+      console.log(err.message);
+    }
 
 
 
-const productItem = async({params}) => {
-  
- 
-  let fetchedProduct = [];
-  // console.log("hait")
+    // const Price = fetchedProduct.price;
 
-  try {
-    const response = await fetch(`http://localhost:3000/api/products/${params.id}`);
-    const data = await response.json();
-    fetchedProduct = data.result || [];
-    console.log("tait")
-    console.log(fetchedProduct);
-  } catch (err) {
-    console.log(err.message);
-  }
-  
+      const handleClick = ()=>{
+        dispach(addProduct(fetchedProduct,extras,price,quantity))
+      }
+      
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -37,7 +51,7 @@ const productItem = async({params}) => {
         <span className={styles.price}>Rs. {fetchedProduct.price}</span>
         <p className={styles.desc}>{fetchedProduct.desc}</p>
         <h3 className={styles.choose}>Choose Additional Ingradients</h3>
-        <div className={styles.ingradient}>
+        <div className={styles.ingradient}> 
           {fetchedProduct.extraOptions.map((option) => (
             <div className={styles.option} key={option._id}>
               <input
@@ -51,13 +65,6 @@ const productItem = async({params}) => {
               </label>
             </div>
           ))}
-
-          {/* <div className={styles.option}> 
-          <input type="checkbox" name="sauce" id="sauce" 
-          className={styles.checkbox}
-          />
-          <label className={styles.text} htmlFor="sauce">With Sauce</label>
-          </div> */}
         </div>
         <div className={styles.add}>
           <input
@@ -67,11 +74,11 @@ const productItem = async({params}) => {
             defaultValue={1}
             className={styles.quantity}
           />
-          <button className={styles.button}>Add to Cart</button>
+          <button className={styles.button} onClick={handleClick}>Add to Cart</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default productItem;
+export default Product;
