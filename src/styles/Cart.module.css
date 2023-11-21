@@ -1,128 +1,128 @@
-.container{
-    padding: 50px;
-    display: flex;
+.container {
+  padding: 50px;
+  display: flex;
 }
 
-.imgContainer{
-    position: relative;
-    height: 100px;
-    width: 100px;
+.imgContainer {
+  position: relative;
+  height: 100px;
+  width: 100px;
 }
 
+.extras {
+  align-items: center;
+  justify-items: center;
 
-
-.left{
-    flex: 2;
+  width: 100%;
 }
 
-.right{
-    flex: 1;
+.left {
+  flex: 2;
 }
 
-.table{
-    width: 100%;
-    border-spacing: 25px;
-
+.right {
+  flex: 1;
 }
 
-.name{
-    font-weight: 600;
-    color: #d1411e;
-    font-size: 1.4vw;
+.table {
+  width: 100%;
+  border-spacing: 25px;
 }
 
-.total{
-    font-weight: 600;
-    font-size: 1.6vw;
+.name {
+  font-weight: 600;
+  color: #d1411e;
+  font-size: 1.4vw;
 }
 
-.wrapper{
-    width: 80%;
-    background-color: #263640;
-    padding: 50px;
-    padding-top: 10px;
-    color: white;
+.total {
+  font-weight: 600;
+  font-size: 1.6vw;
+}
+
+.wrapper {
+  width: 80%;
+  background-color: #263640;
+  padding: 50px;
+  padding-top: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  width: 70%;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.totalTextTitle {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+    overflow: hidden;
+  }
+  .table {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-}
+  }
 
+  .trTitle {
+    display: none;
+  }
 
-
-.button{
-    cursor: pointer;
-    width: 70%;
-    border-radius: 5px;
-    padding: 10px;
-    border: none;
-    margin-top: 20px;
-    font-weight: 600;
-}
-
-.totalTextTitle{
-    margin-right: 10px;
-}
-
-
-
-@media screen and (max-width:480px) {
-    .container{
-        flex-direction: column;
-        padding: 10px;
-        height: auto;
-        overflow: hidden;
-    }
-    .table{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .trTitle{
-        display: none;
-    }
-
-    .tr{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-       
-    }
-    .name{
-        font-size: 4vw;
-    }
-
-   .total{
+  .tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .name {
     font-size: 4vw;
-   }
+  }
 
-   .extras .price, .quantity{
+  .total {
+    font-size: 4vw;
+  }
+
+  .extras .price,
+  .quantity {
     margin-right: 60px;
-   }
-   .imgContainer{
+  }
+  .imgContainer {
     width: 50vw;
     height: 50vw;
-   }
+  }
 
-   .price::before{
+  .price::before {
     content: "Price: ";
     font-weight: 600;
-   }
-   .quantity::before{
+  }
+  .quantity::before {
     content: "Quantity: ";
     font-weight: 600;
-   }
-   .total::before{
+  }
+  .total::before {
     content: "Total: ";
     font-weight: 600;
-   }
+  }
 
-   .right{
+  .right {
     display: flex;
     align-items: center;
     justify-content: center;
-   }
+  }
 }
