@@ -2,6 +2,7 @@ import Feature from "@/components/Feature";
 import Product from "@/components/Product";
 
 export default async function Home({ initialProducts}) {
+  
   let fetchedProducts = [];
   try {
     const response = await fetch("http://localhost:3000/api/products",{cache:"no-store",});

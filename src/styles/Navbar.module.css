@@ -16,9 +16,12 @@
     align-items: center;
 }
 
+
 .item:nth-child(2){
     flex: 3;
 }
+
+
 
 .telephoneBtn{
     background-color: white;
@@ -38,6 +41,7 @@
     font-weight: 600;
     font-size: 12px;
     text-transform:uppercase;
+    text-decoration: none;
 }
 
 .text:last-child{
@@ -53,12 +57,22 @@
     font-size: 1.4vw;
     font-weight: 600;
     padding: 0;
+
 }
+
 
 .listItem{
     margin: 20px;
     cursor:pointer;
+    color: white;
+    text-decoration: none;
+}
 
+
+
+.activeLink{
+    color: #263640;
+    background-color: green;
 }
 
 .item:last-child{
@@ -86,8 +100,9 @@
     font-weight: 600;
 }
 
+
+
 .menu{
-    color: white;
     display: none;
     opacity: 0;
 }
@@ -95,6 +110,10 @@
 .cross{
     display: none;
     opacity: 0;
+}
+
+.listMobile{
+    display: none;
 }
 
 
@@ -138,10 +157,10 @@
     opacity: 1;
 }
 
-.listMobile{
+/* .listMobile{
     display: none;
 }
-
+ */
 
 .list{
     display: none;

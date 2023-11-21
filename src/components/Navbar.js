@@ -18,6 +18,7 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
+
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -31,26 +32,41 @@ const Navbar = () => {
       </div>
 
       <div className={styles.item}>
-        <ul className={menuOpen ? styles.listMobile : styles.list}>
-          <li className={styles.listItem}>Homepage</li>
-          <li className={styles.listItem}>Products</li>
-          <li className={styles.listItem}>Menu</li>
-          <li className={styles.listItem}>Blog</li>
-          <li className={styles.listItem}>Contact</li>
-        </ul>
+          <ul className={menuOpen ? styles.listMobile : styles.list}>
+            
+          
+              <li className={styles.listItem} style={{textDecoration:'none'}}>
+               Homepage
+              </li>
+            
+              
+              <li className={styles.listItem}>
+               Products
+              </li>
+              <li className={styles.listItem}>
+               Menu
+              </li>
+              <li className={styles.listItem}>
+               Blogs
+              </li>
+              <li className={styles.listItem}>
+               Contact
+              </li>
+            
+          </ul>
       </div>
       <div className={styles.item}>
-        <Link href='/cart' passHref>
-        <div className={styles.cart}>
-          <Image src="/Img/cart.png" alt="" width={30} height={30} />
-          <div className={styles.counter}>{quantity}</div>
-        </div>
+        <Link href="/cart" passHref>
+          <div className={styles.cart}>
+            <Image src="/Img/cart.png" alt="" width={30} height={30} />
+            <div className={styles.counter}>{quantity}</div>
+          </div>
         </Link>
         <RiMenu2Fill
           size={30}
           className={styles.menu}
           onClick={toggleMenu}
-          style={{ display: menuOpen ? "none" : "block" }}
+          style={{ display: menuOpen ? 'none': "block" }}
         />
         <MdRestaurantMenu
           size={30}

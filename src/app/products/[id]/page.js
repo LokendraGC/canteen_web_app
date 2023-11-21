@@ -1,39 +1,50 @@
-'use client'
-import React ,{useState} from 'react'
+"use client"
+import React, { useState } from "react";
 import Image from "next/image";
-import styles from '../../../styles/productItem.module.css'
-import { useDispatch } from 'react-redux';
-import { addProduct } from '@/app/redux/cartSlice';
+import styles from "../../../styles/productItem.module.css";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/app/redux/cartSlice";
 
-  const Product = async ({params}) => {
+const Product = async ({ params }) => {
+  const [extras, setExtras] = useState([]);
+  const [price, setPrice] = useState();
+  const [quantity, setQuantity] = useState(1);
+  const dispach = useDispatch();
 
-    const dispach = useDispatch();
-    const [extras, setExtras] = useState([])
-    const [price,setPrice] = useState()
-    const [quantity,setQuantity] = useState(1)
+  // console.log(extras);
 
-    let fetchedProduct = [];
+  let fetchedProduct = [];
 
-    try {
-      const response = await fetch(
-        `http://localhost:3000/api/products/${params.id}`
-      );
-      const data = await response.json();
-      fetchedProduct = data.result || [];
-      console.log("tait");
-      // console.log(fetchedProduct);
-    } catch (err) {
-      console.log(err.message);
-    }
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/products/${params.id}`
+    );
+    const data = await response.json();
+    fetchedProduct = data.result || [];
+    // console.log("tait");
+    // console.log(fetchedProduct);
+  } catch (err) {
+    console.log(err.message);
+  }
 
+  // const Price = fetchedProduct.price;
 
+  const handleClick = () => {
+    console.log("Hi")
+    dispach(addProduct(fetchedProduct, extras, price, quantity));
+  };
 
-    // const Price = fetchedProduct.price;
+  //       const handleChange = (e,option)=>{
+  //           const checked = e.target.checked;
 
-      const handleClick = ()=>{
-        dispach(addProduct(fetchedProduct,extras,price,quantity))
-      }
-      
+  //           if(checked){
+  //             setExtras((prev)=>[...prev,option])
+  //           }else{
+  //             setExtras(extras.filter((extra)=> extra._id !== option._id))
+  //           }
+  //       }
+  // console.log(extras)
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -51,7 +62,7 @@ import { addProduct } from '@/app/redux/cartSlice';
         <span className={styles.price}>Rs. {fetchedProduct.price}</span>
         <p className={styles.desc}>{fetchedProduct.desc}</p>
         <h3 className={styles.choose}>Choose Additional Ingradients</h3>
-        <div className={styles.ingradient}> 
+        <div className={styles.ingradient}>
           {fetchedProduct.extraOptions.map((option) => (
             <div className={styles.option} key={option._id}>
               <input
@@ -59,6 +70,7 @@ import { addProduct } from '@/app/redux/cartSlice';
                 name={option.text}
                 id={option.text}
                 className={styles.checkbox}
+                // onChange={(e) => handleChange(e, option)}
               />
               <label className={styles.text} htmlFor="spicy">
                 {option.text}
@@ -68,13 +80,14 @@ import { addProduct } from '@/app/redux/cartSlice';
         </div>
         <div className={styles.add}>
           <input
+            // onChange={(e)=>setQuantity(e.target.value)}
             type="number"
-            name="number"
-            id=""
             defaultValue={1}
             className={styles.quantity}
           />
-          <button className={styles.button} onClick={handleClick}>Add to Cart</button>
+          <button className={styles.button} onClick={handleClick}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
