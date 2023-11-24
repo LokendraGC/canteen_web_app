@@ -66,6 +66,22 @@
   margin-right: 10px;
 }
 
+.paymentMethod{
+  margin-top: 20px;
+}
+
+.cashBtn{
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px 25px;
+  border: none;
+  margin-top: 20px;
+  font-weight: 600;
+  color: rgb(8, 127, 8);
+
+}
+
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column;
