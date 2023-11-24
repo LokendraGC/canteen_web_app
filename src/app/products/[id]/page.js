@@ -15,6 +15,7 @@ const Product = ({ params }) => {
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState(1);
   const [fetchedProduct, setFetchedProduct] = useState([]);
+  
   useEffect(() => {
     const fetchFunction = async () => {
       try {
@@ -30,6 +31,7 @@ const Product = ({ params }) => {
     };
     fetchFunction();
   }, []);
+
   const handleCheckboxChange = (optionText, isChecked) => {
     setExtras((prevExtras) => ({
       ...prevExtras,

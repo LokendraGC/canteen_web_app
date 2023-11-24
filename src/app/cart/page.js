@@ -1,10 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Cart.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import OrderDetail from "@/components/OrderDetail";
+import axios from "axios";
+// import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { reset } from "../redux/cartSlice";
 
 const Cart = () => {
+
+  const router = usePathname();
+    const createOrder = async(data)=>{
+      try{
+        const response = await axios.post("http://localhost:3000/api/orders",data);
+        if (response.status === 201) {
+        dispatch(reset());
+        router.push(`/orders/${response.data._id}`);
+      }
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    // createOrder();
+
+  const [open, setOpen] = useState(false);
+  const [cash, setCash] = useState(false);
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const quantity = useSelector((state) => state.cart.quantity);
@@ -81,10 +105,22 @@ const Cart = () => {
               <b className={styles.totalTextTitle}>Total:</b> Rs.
               {total}
             </div>
-            <button className={styles.button}>CHECKOUT NOW!</button>
+            {open ? (
+              <div className={styles.paymentMethod}>
+                <button className={styles.cashBtn} onClick={()=>setCash(true)}>CASH ON DELIVERY</button>
+              </div>
+            ) : (
+              <button onClick={() => setOpen(true)} className={styles.button}>
+                CHECKOUT NOW!
+              </button>
+            )}
           </div>
+          {cash && (
+            <OrderDetail total={total} createOrder={createOrder}/>
+          )}
         </div>
       ))}
+
     </div>
   );
 };

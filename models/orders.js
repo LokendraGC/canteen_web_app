@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema(
-  {
-    name: {
+   {
+    customer: {
       type: String,
       required: true,
       maxlength: 60,
     },
-    state: {
+    address: {
       type: String,
       required: true,
-      maxlength: 60,
+      maxlength: 200,
     },
     total: {
       type: Number,
@@ -22,12 +22,11 @@ const orderSchema = new mongoose.Schema(
     },
     method: {
       type: Number,
-      required: true,
+      required:true
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
+
 );
 
 export default mongoose.models.Order ||
