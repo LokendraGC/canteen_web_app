@@ -47,18 +47,21 @@ const Navbar = () => {
             <div className={styles.counter}>{cart.products.length}</div>
           </div>
         </Link>
-        <RiMenu2Fill
-          size={30}
-          className={styles.menu}
-          onClick={toggleMenu}
-          style={{ display: menuOpen ? "none" : "block" }}
-        />
-        <MdRestaurantMenu
-          size={30}
-          className={styles.cross}
-          onClick={toggleMenu}
-          style={{ display: menuOpen ? "block" : "none" }}
-        />
+        {!menuOpen ? (
+          <RiMenu2Fill
+            size={30}
+            className={styles.menu}
+            onClick={toggleMenu}
+            // style={{ display: !menuOpen ? "block" : "none" }}
+          />
+        ) : (
+          <MdRestaurantMenu
+            size={30}
+            className={styles.cross}
+            onClick={toggleMenu}
+            // style={{ display: menuOpen ? "block" : "none" }}
+          />
+        )}
       </div>
     </div>
   );
