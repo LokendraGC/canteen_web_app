@@ -2,40 +2,36 @@ import Order from "../../../../models/orders.js";
 import { connectionStr } from "../../../../lib/mongo";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server.js";
+await mongoose.connect(connectionStr, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+export async function POST(req, res) {
+  console.log("--------Hait");
 
-
-export async function handler(req, res) {
-    console.log("Hait")
-    console.log(req)
-    
-    await mongoose.connect(connectionStr, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-    const { method } = req;
+  const { method } = req;
+  console.log("------", method);
   const payload = await req.json();
-
-  if (method === "GET") {
+  if (method === "POST") {
     try {
-      const orders = await Order.find().exec();
+      //   await mongoose.connect(connectionStr);
 
-      return NextResponse.json({ message: orders });
+      let order = new Order(payload);
+      console.log(payload);
+      const result = await order.save();
+
+      return NextResponse.json({ message: result }, { status: 201 });
     } catch (err) {
       return NextResponse.json({ error: err.message });
     }
   }
+}
+export async function GET(req, res) {
+  try {
+    const orders = await Order.find().exec();
 
-  if (method === "POST") {
-    try {
-    //   await mongoose.connect(connectionStr);
-
-     let order = new Order(payload);
-     const result = await order.save();
-
-      return NextResponse.json({ message: result });
-    } catch (err) {
-      return NextResponse.json({ error: err.message });
-    }
+    return NextResponse.json({ message: orders });
+  } catch (err) {
+    return NextResponse.json({ error: err.message });
   }
 }

@@ -6,25 +6,28 @@ import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from "@/components/OrderDetail";
 import axios from "axios";
 // import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { reset } from "../redux/cartSlice";
 
 const Cart = () => {
-
-  const router = usePathname();
-    const createOrder = async(data)=>{
-      try{
-        const response = await axios.post("http://localhost:3000/api/orders",data);
-        if (response.status === 201) {
+  const router = useRouter();
+  const createOrder = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/orders",
+        data
+      );
+      console.log(response);
+      if (response.status === 201) {
         dispatch(reset());
-        router.push(`/orders/${response.data._id}`);
+        router.push(`/order/${response.data._id}`);
       }
-      }catch(err){
-        console.log(err)
-      }
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    // createOrder();
+  // createOrder();
 
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
@@ -107,7 +110,12 @@ const Cart = () => {
             </div>
             {open ? (
               <div className={styles.paymentMethod}>
-                <button className={styles.cashBtn} onClick={()=>setCash(true)}>CASH ON DELIVERY</button>
+                <button
+                  className={styles.cashBtn}
+                  onClick={() => setCash(true)}
+                >
+                  CASH ON DELIVERY
+                </button>
               </div>
             ) : (
               <button onClick={() => setOpen(true)} className={styles.button}>
@@ -115,12 +123,9 @@ const Cart = () => {
               </button>
             )}
           </div>
-          {cash && (
-            <OrderDetail total={total} createOrder={createOrder}/>
-          )}
+          {cash && <OrderDetail total={total} createOrder={createOrder} />}
         </div>
       ))}
-
     </div>
   );
 };
