@@ -17,7 +17,7 @@ export async function POST(req, res) {
       //   await mongoose.connect(connectionStr);
 
       let order = new Order(payload);
-      console.log(payload);
+      // console.log(payload);
       const result = await order.save();
 
       return NextResponse.json({ message: result }, { status: 201 });

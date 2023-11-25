@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from "@/components/OrderDetail";
 import axios from "axios";
-// import { useRouter } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { reset } from "../redux/cartSlice";
 
 const Cart = () => {
+  
   const router = useRouter();
   const createOrder = async (data) => {
     try {
@@ -17,11 +17,12 @@ const Cart = () => {
         "http://localhost:3000/api/orders",
         data
       );
+      console.log("res")
       console.log(response);
       if (response.status === 201) {
-        dispatch(reset());
-        router.push(`/order/${response.data._id}`);
+        router.push(`/order/${response.data.message._id}`);
       }
+      dispatch(reset());
     } catch (err) {
       console.log(err);
     }

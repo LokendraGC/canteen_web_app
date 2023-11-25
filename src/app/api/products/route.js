@@ -8,7 +8,7 @@ export async function GET() {
   try {
     await mongoose.connect(connectionStr);
     data = await Product.find();
-    console.log(data);
+    // console.log(data);
   } catch (err) {
     data = { succsess: false, error: err.message };
   }
@@ -18,7 +18,7 @@ export async function GET() {
 
 
 export async function POST(req) {
-  console.log(req);
+  // console.log(req);
   const { method } = req;
   const payload = await req.json();
 
