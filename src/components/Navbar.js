@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className={styles.item}>
         <ul className={menuOpen ? styles.listMobile : styles.list}>
           <Link href={"/"}>
-            <li className={styles.listItem}>Homepage</li>
+            <li className={styles.listItem} onClick={()=>setMenuOpen(false)}>Homepage</li>
           </Link>
           <li className={styles.listItem}>Products</li>
           <li className={styles.listItem}>Menu</li>
