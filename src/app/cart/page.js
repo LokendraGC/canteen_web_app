@@ -14,7 +14,7 @@ const Cart = () => {
   const createOrder = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/orders",
+        "/api/orders",
         data
       );
       console.log("res")

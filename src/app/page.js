@@ -5,7 +5,7 @@ export default async function Home({ initialProducts}) {
   
   let fetchedProducts = [];
   try {
-    const response = await fetch("http://localhost:3000/api/products",{cache:"no-store",});
+    const response = await fetch("/api/products",{cache:"no-store",});
     const data = await response.json();
     fetchedProducts = data.result;
     // console.log(fetchedProducts);

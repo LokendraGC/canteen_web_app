@@ -20,7 +20,7 @@ const Product = ({ params }) => {
     const fetchFunction = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/products/${params.id}`
+          `/api/products/${params.id}`
         );
         const data = await response.json();
         setFetchedProduct(data.result || []);

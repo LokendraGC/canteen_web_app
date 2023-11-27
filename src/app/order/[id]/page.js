@@ -11,7 +11,7 @@ const Order = ({params}) => {
      const fetchFunction = async () => {
        try {
          const response = await fetch(
-           `http://localhost:3000/api/orders/${params.id}`
+           `/api/orders/${params.id}`
          );
          const data = await response.json();
          setFetchedOrder(data.result || []);
