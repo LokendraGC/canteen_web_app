@@ -3,7 +3,7 @@ import styles from "../styles/Product.module.css";
 import Card from "./Card";
 
 const Product = ({ products }) => {
-
+    console.log(products)
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Where Food Meets Efficiency</h1>
