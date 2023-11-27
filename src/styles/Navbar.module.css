@@ -1,172 +1,155 @@
-.container{
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:0px 24px;
-    position: sticky;
-    top: 0;
-    background-color: #d1411e;
-    z-index: 999;
+.container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 24px;
+  position: sticky;
+  top: 0;
+  background-color: #d1411e;
+  z-index: 999;
 }
 
-.item{
-    flex: 1;
-    display: flex;
-    align-items: center;
+.item {
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
-
-.item:nth-child(2){
-    flex: 3;
+.item:nth-child(2) {
+  flex: 3;
 }
 
-
-
-.telephoneBtn{
-    background-color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    padding: 9px;
-    padding-left: 17px;
+.telephoneBtn {
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 9px;
+  padding-left: 17px;
 }
 
-.texts{
-    color: white;
-    margin-left: 15px;
+.texts {
+  color: white;
+  margin-left: 15px;
 }
 
-.text:first-child{
-    font-weight: 600;
-    font-size: 12px;
-    text-transform:uppercase;
-    text-decoration: none;
+.text:first-child {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
-.text:last-child{
-    font-weight: bold;
-    font-size: 21px;
+.text:last-child {
+  font-weight: bold;
+  font-size: 21px;
 }
 
-.list{
-    display: flex;
-    align-items: center;
-    color: white;   
-    list-style: none;
-    font-size: 1.4vw;
-    font-weight: 600;
-    padding: 0;
-
+.list {
+  display: flex;
+  align-items: center;
+  color: white;
+  list-style: none;
+  font-size: 1.4vw;
+  font-weight: 600;
+  padding: 0;
 }
 
-
-.listItem{
-    margin: 20px;
-    cursor:pointer;
-    color: white;
-    text-decoration: none;
+.listItem {
+  margin: 20px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
 }
 
-
-
-.activeLink{
-    color: #263640;
-    background-color: green;
+.activeLink {
+  color: #263640;
+  background-color: green;
 }
 
-.item:last-child{
-    justify-content: flex-end;
+.item:last-child {
+  justify-content: flex-end;
 }
 
-.cart{
-    position: relative;
-    cursor: pointer;
-    margin-right: 27px;
+.cart {
+  position: relative;
+  cursor: pointer;
+  margin-right: 27px;
 }
 
-.counter{
-    position: absolute;
-    top:-17px;
-    right: -4px;
-    background-color: white;
-    border-radius: 50%;
-    padding: 3px;
-    height: 20px;
-    width: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
+.counter {
+  position: absolute;
+  top: -17px;
+  right: -4px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 3px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
-
-
-.menu{
-    display: none;
-    opacity: 0;
+.menu {
+  display: none;
+  opacity: 0;
 }
 
-.cross{
-    display: none;
-    opacity: 0;
+.cross {
+  display: none;
+  opacity: 0;
 }
 
-.listMobile{
-    display: none;
-}
-
-
-
-@media screen and (max-width:480px) {
- 
- 
-.item:nth-child(2){
+@media screen and (max-width: 480px) {
+  .item:nth-child(2) {
     display: block;
-}
+  }
 
-.item:nth-child(1){
+  .item:nth-child(1) {
     flex: 3;
-}
+  }
 
-.listMobile{
+  .listMobile {
     display: block;
-}
+  }
 
-.telephoneBtn{
+  .telephoneBtn {
     padding: 7px;
-}
+  }
 
-.texts{
+  .texts {
     font-size: 1vw;
-}
+  }
 
-.text{
+  .text {
     font-size: 2vw;
-}
+  }
 
-.menu{
+  .menu {
     color: white;
     display: block;
     opacity: 1;
-}
+  }
 
-.cross{
+  .cross {
     color: white;
     display: block;
     opacity: 1;
-}
+  }
 
-/* .listMobile{
+  /* .listMobile{
     display: none;
 }
  */
 
-.list{
+  .list {
     display: none;
-}
+  }
 
-.listMobile{
+  .listMobile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,12 +162,11 @@
     left: 0;
     margin-top: 50px;
     height: 80vh;
-}
+  }
 
-.listItem{
+  .listItem {
     transition: all 1s ease-out;
     color: white;
     font-size: 4.9vw;
-}
-
+  }
 }

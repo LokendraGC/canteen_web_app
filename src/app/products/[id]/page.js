@@ -1,49 +1,60 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "../../../styles/productItem.module.css";
 import { useDispatch } from "react-redux";
-import { addProduct } from "@/app/redux/cartSlice";
+import { addProduct, reset } from "@/app/redux/cartSlice";
+import { useEffect } from "react";
 
-const Product = async ({ params }) => {
-  const [extras, setExtras] = useState([]);
+const Product = ({ params }) => {
+  const dispach = useDispatch();
+  const [extras, setExtras] = useState({
+    "With Spice": false,
+    "With Sauce": false,
+  });
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState(1);
-  const dispach = useDispatch();
+  const [fetchedProduct, setFetchedProduct] = useState([]);
 
-  // console.log(extras);
+  useEffect(() => {
+    const fetchFunction = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/products/${params.id}`
+        );
+        const data = await response.json();
+        setFetchedProduct(data.result || []);
+        console.log("tait");
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchFunction();
+  }, []);
 
-  let fetchedProduct = [];
+  const handleCheckboxChange = (optionText, isChecked) => {
+    setExtras((prevExtras) => ({
+      ...prevExtras,
+      [optionText]: isChecked,
+    }));
+  };
 
-  try {
-    const response = await fetch(
-      `http://localhost:3000/api/products/${params.id}`
-    );
-    const data = await response.json();
-    fetchedProduct = data.result || [];
-    // console.log("tait");
-    // console.log(fetchedProduct);
-  } catch (err) {
-    console.log(err.message);
-  }
+  useEffect(() => {
+    console.log(extras);
+  }, [extras]);
 
   // const Price = fetchedProduct.price;
 
   const handleClick = () => {
-    console.log("Hi")
-    dispach(addProduct(fetchedProduct, extras, price, quantity));
+    dispach(
+      addProduct({
+        fetchedProduct,
+        extras,
+        price,
+        quantity: parseInt(quantity),
+      })
+    );
   };
-
-  //       const handleChange = (e,option)=>{
-  //           const checked = e.target.checked;
-
-  //           if(checked){
-  //             setExtras((prev)=>[...prev,option])
-  //           }else{
-  //             setExtras(extras.filter((extra)=> extra._id !== option._id))
-  //           }
-  //       }
-  // console.log(extras)
 
   return (
     <div className={styles.container}>
@@ -63,14 +74,16 @@ const Product = async ({ params }) => {
         <p className={styles.desc}>{fetchedProduct.desc}</p>
         <h3 className={styles.choose}>Choose Additional Ingradients</h3>
         <div className={styles.ingradient}>
-          {fetchedProduct.extraOptions.map((option) => (
+          {fetchedProduct?.extraOptions?.map((option) => (
             <div className={styles.option} key={option._id}>
               <input
                 type="checkbox"
                 name={option.text}
                 id={option.text}
                 className={styles.checkbox}
-                // onChange={(e) => handleChange(e, option)}
+                onChange={(e) =>
+                  handleCheckboxChange(option.text, e.target.checked)
+                }
               />
               <label className={styles.text} htmlFor="spicy">
                 {option.text}
@@ -80,9 +93,11 @@ const Product = async ({ params }) => {
         </div>
         <div className={styles.add}>
           <input
-            // onChange={(e)=>setQuantity(e.target.value)}
             type="number"
+            name="number"
+            id=""
             defaultValue={1}
+            onChange={(e) => setQuantity(e.target.value)}
             className={styles.quantity}
           />
           <button className={styles.button} onClick={handleClick}>

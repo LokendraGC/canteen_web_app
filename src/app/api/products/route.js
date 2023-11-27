@@ -18,7 +18,7 @@ export async function GET() {
 
 
 export async function POST(req) {
-  console.log(req);
+  // console.log(req);
   const { method } = req;
   const payload = await req.json();
 
