@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const 
 Card = ({product}) => {
+  console.log(product);
   return (
     <div className={styles.container}>
       <Link href={`/products/${product._id}`} passHref>
