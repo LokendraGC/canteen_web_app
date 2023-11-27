@@ -21,7 +21,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <div className={styles.item}>
         <div className={styles.telephoneBtn}>
-          <Image src="/img/telephone.png" alt="" width={44} height={45} />
+          <Image src="/Img/telephone.png" alt="" width={44} height={45} />
         </div>
         <div className={styles.texts}>
           <div className={styles.text}>Order Now !</div>
