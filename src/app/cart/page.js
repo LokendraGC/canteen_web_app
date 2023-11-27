@@ -14,7 +14,7 @@ const Cart = () => {
   const createOrder = async (data) => {
     try {
       const response = await axios.post(
-        "/api/orders",
+        "https://canteen-web-app.vercel.app/api/orders",
         data
       );
       console.log("res")

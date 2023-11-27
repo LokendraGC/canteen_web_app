@@ -11,7 +11,7 @@ const Order = ({params}) => {
      const fetchFunction = async () => {
        try {
          const response = await fetch(
-           `/api/orders/${params.id}`
+           `https://canteen-web-app.vercel.app/api/orders/${params.id}`
          );
          const data = await response.json();
          setFetchedOrder(data.result || []);

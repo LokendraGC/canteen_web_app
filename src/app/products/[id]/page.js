@@ -20,7 +20,7 @@ const Product = ({ params }) => {
     const fetchFunction = async () => {
       try {
         const response = await fetch(
-          `/api/products/${params.id}`
+          `https://canteen-web-app.vercel.app/api/products/${params.id}`
         );
         const data = await response.json();
         setFetchedProduct(data.result || []);
